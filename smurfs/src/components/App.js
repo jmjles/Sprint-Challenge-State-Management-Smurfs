@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
-  }
+import { Container } from "@material-ui/core";
+import Smurfs from "./smurfs";
+import {connect} from 'react-redux'
+import {getSmurfs} from '../redux/actions/index'
+function App(props) {
+  return (
+    <div className="App">
+      <Container>
+        <Smurfs smurfs={props.smurfs} getSmurfs={props.getSmurfs}/>
+      </Container>
+    </div>
+  );
 }
-
-export default App;
+const mapProps = state => ({
+  smurfs : state.smurfs.smurfs
+})
+export default connect(mapProps,{getSmurfs})(App)
