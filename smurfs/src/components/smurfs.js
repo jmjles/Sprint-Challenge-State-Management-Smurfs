@@ -7,7 +7,7 @@ function Smurfs(props) {
     smurfs();
   }, [smurfs])
   return (
-    <Grid container>
+    <Grid container justify='space-around'>
       {props.smurfs.map(smurf => (
         <Smurf smurf={smurf} key={smurf.id}/>
       ))}

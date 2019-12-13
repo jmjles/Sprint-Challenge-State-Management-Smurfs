@@ -1,4 +1,4 @@
-import {GET_SMURFS} from '../actions/types.js'
+import {GET_SMURFS,POST_SMURF} from '../actions/types.js'
 const initState = {
     smurfs:[]
 }
@@ -10,6 +10,11 @@ export const smurfReducer = (state = initState,action) => {
                 ...state,
                 smurfs:action.data
             }
+            case POST_SMURF:
+                return{
+                    ...state,
+                    smurfs:action.data
+                }
         default:
             return state
     }

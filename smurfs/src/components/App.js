@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import { Container } from "@material-ui/core";
 import Smurfs from "./smurfs";
+import SmurfForm from './SmurfForm'
 import {connect} from 'react-redux'
-import {getSmurfs} from '../redux/actions/index'
+import {getSmurfs,postSmurfs} from '../redux/actions/index'
 function App(props) {
   return (
     <div className="App">
       <Container>
+        <SmurfForm postSmurfs={props.postSmurfs}/>
         <Smurfs smurfs={props.smurfs} getSmurfs={props.getSmurfs}/>
       </Container>
     </div>
@@ -16,4 +18,4 @@ function App(props) {
 const mapProps = state => ({
   smurfs : state.smurfs.smurfs
 })
-export default connect(mapProps,{getSmurfs})(App)
+export default connect(mapProps,{getSmurfs,postSmurfs})(App)
